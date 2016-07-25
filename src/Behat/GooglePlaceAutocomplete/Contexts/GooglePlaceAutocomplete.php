@@ -1,15 +1,15 @@
-<?php
-
-namespace Behat\GooglePlaceAutocomplete\Contexts;
+<?php namespace Medology\Behat\GooglePlaceAutocomplete\Contexts;
 
 use Behat\Mink\Exception\ExpectationException;
-use Behat\MinkExtension\Context\MinkContext;
+use Medology\Behat\GooglePlaceAutocomplete\PseudoInterfaces\MinkContextInterface;
 
-class PlaceAutocomplete extends MinkContext {
+trait GooglePlaceAutocomplete
+{
+    use MinkContextInterface;
 
     /**
      * {@inheritdoc}
-     * @When /^(?:I |)choose the first (P|p)lace (A|a)utocomplete option$/
+     * @When /^(?:I |)choose the first place autocomplete option$/i
      */
     public function chooseFirstOption()
     {

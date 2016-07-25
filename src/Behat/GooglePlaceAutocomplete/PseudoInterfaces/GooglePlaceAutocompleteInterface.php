@@ -1,9 +1,9 @@
-<?php namespace features\contexts;
+<?php namespace Medology\Behat\GooglePlaceAutocomplete\PseudoInterfaces;
 
 use Behat\Mink\Exception\ExpectationException;
 
-trait PlaceAutocomplete {
-
+trait GooglePlaceAutocompleteInterface
+{
     /**
      * Chooses the first address in the autocomplete popup.
      *
