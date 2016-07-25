@@ -2,7 +2,7 @@
 
 use Behat\Mink\Exception\ExpectationException;
 
-trait GooglePlaceAutocompleteInterface
+trait GooglePlaceAutocompleteContextInterface
 {
     /**
      * Chooses the first address in the autocomplete popup.

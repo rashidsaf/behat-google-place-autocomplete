@@ -3,7 +3,7 @@
 use Behat\Mink\Exception\ExpectationException;
 use Medology\Behat\GooglePlaceAutocomplete\PseudoInterfaces\MinkContextInterface;
 
-trait GooglePlaceAutocomplete
+trait GooglePlaceAutocompleteContext
 {
     use MinkContextInterface;
 
