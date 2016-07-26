@@ -2,6 +2,9 @@
 
 use Behat\Mink\Exception\ExpectationException;
 
+/**
+ * A context for handling tests for the Gooogle Place Autocomplete Javascript script.
+ */
 trait GooglePlaceAutocompleteContextInterface
 {
     /**

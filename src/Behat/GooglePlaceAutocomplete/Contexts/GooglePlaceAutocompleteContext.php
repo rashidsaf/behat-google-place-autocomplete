@@ -3,6 +3,9 @@
 use Behat\Mink\Exception\ExpectationException;
 use Medology\Behat\GooglePlaceAutocomplete\PseudoInterfaces\MinkContextInterface;
 
+/**
+ * {@inheritdoc}
+ */
 trait GooglePlaceAutocompleteContext
 {
     use MinkContextInterface;
