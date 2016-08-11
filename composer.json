@@ -4,13 +4,18 @@
   "description": "Mink extension for Google Place Autocomplete",
   "license": "MIT",
   "require": {
-    "php": ">=5.4.41",
     "behat/behat": "^3.0",
-    "behat/mink-extension": "^2.0"
+    "medology/flexible-mink": "dev-master",
+    "behat/mink-extension": "^2.0",
+    "symfony/config": "~2.8"
+  },
+  "require-dev":{
+    "behat/mink-selenium2-driver": "*"
   },
   "autoload": {
-    "psr-0": {
-      "Behat\\GooglePlaceAutocomplete\\": "src/"
+    "psr-4": {
+      "Medology\\": "src/"
     }
   }
 }
+

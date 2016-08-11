@@ -10,11 +10,6 @@ use Behat\Mink\Session;
 trait MinkContextInterface
 {
     /**
-     * Clicks current node.
-     */
-    abstract public function click();
-
-    /**
      * Returns the Mink session.
      *
      * @param  string|null $name name of the session OR active session will be used
