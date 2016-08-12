@@ -14,4 +14,3 @@ default:
             browser: chrome
             wd_host: http://chrome:4444/wd/hub
     Behat\ParallelWorker\ServiceContainer\ParallelWorkerExtension: ~
-    features\Extensions\Assertion\AssertionExtension: ~
