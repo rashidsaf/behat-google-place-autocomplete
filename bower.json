@@ -6,7 +6,7 @@
   ],
   "description": "",
   "main": "",
-  "license": "MIT",
+  "license": "Closed Source",
   "private": true,
   "dependencies": {
     "foundation-sites": "^6.2.3"

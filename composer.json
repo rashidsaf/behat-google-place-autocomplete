@@ -2,7 +2,7 @@
   "name": "medology/behat-google-place-autocomplete",
   "type": "behat-extension",
   "description": "Mink extension for Google Place Autocomplete",
-  "license": "MIT",
+  "license": "Closed Source",
   "require": {
     "behat/behat": "^3.0",
     "medology/flexible-mink": "dev-master",
