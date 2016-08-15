@@ -7,6 +7,6 @@ done
 
 PROJECT_NAME=behatgoogleplaceautocomplete
 
-docker run -it -w /data -v $(pwd):/data --net ${PROJECT_NAME}_default \
+docker run --rm -it -w /data -v $(pwd):/data --net ${PROJECT_NAME}_default \
     --link web:behatgoogleplaceautocomplete.local \
     php:cli php $ARGS
