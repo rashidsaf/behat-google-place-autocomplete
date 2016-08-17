@@ -1,8 +1,5 @@
-#!/bin/bash +x
+#!/bin/bash
 
-ARGS=''
-for i in "$@"; do
-  ARGS="$ARGS ${i}"
-done
+. "${DIR}"/lib/args.sh
 
 docker run --rm -v $(pwd):/data -w /data composer/composer $ARGS

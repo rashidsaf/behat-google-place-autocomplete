@@ -1,9 +1,6 @@
 #!/bin/bash +x
 
-ARGS=''
-for i in "$@"; do
-  ARGS="$ARGS ${i}"
-done
+. "${DIR}"/lib/args.sh
 
 PROJECT_NAME=behatgoogleplaceautocomplete
 
