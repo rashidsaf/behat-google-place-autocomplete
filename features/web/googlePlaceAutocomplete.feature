@@ -14,6 +14,6 @@ Feature: Select an address using Google Place Autocomplete
       And I select "<state>" from "State"
      Then the "Zip Code" field should contain "<postal>"
 
-     Example:
+     Examples:
      | input                               | address                | city    | state | postal |
      | 5821 Southwest Freeway, Houston, TX | 5821 Southwest Freeway | Houston | Texas |  77057 |
