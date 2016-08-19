@@ -1,5 +1,7 @@
 #!/bin/bash +x
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # install Composer dependancies
 echo "Installing Composer dependancies..."
 bin/composer install

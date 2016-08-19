@@ -1,11 +1,21 @@
 version: '2'
 
 services:
-  web:
-    image: httpd:latest
+  app:
+    image: php:7.0-fpm
     volumes:
       - ..:/data
-      - ../web:/usr/local/apache2/htdocs:ro
+
+  web:
+    image: php:7-apache
+    depends_on:
+      - app
+    links:
+      - app
+    volumes:
+      - ..:/data
+      - ../web:/var/www/html
+      - ../vendor:/var/www/html/vendor
     ports:
       - 80:80
 
@@ -22,5 +32,4 @@ services:
       - /dev/shm:/dev/shm
       - ..:/data
     ports:
-      - 4444:4444
       - 5900:5900
