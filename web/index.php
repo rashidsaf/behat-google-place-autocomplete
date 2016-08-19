@@ -103,12 +103,10 @@ $dotenv->load();
              * This example displays an address form, using the autocomplete feature
              * of the Google Places API to help users fill in the information.
              *
-             * @var placeSearch  Used for Google maps places autocomplete
              * @var autocomplete Sets the Google maps places autocomplete
              * @var compnentForm Configuraiton for the form of the autocomplete
              */
-
-            var placeSearch, autocomplete;
+            var autocomplete;
             var componentForm = {
                 locality: 'long_name',
                 administrative_area_level_1: 'short_name',
