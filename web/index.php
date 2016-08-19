@@ -1,3 +1,8 @@
+<?php
+require_once 'vendor/autoload.php';
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -161,6 +166,6 @@
             return self;
         }();
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxBWgQaHW2wWAoWXUgKtwIn8BDJDtqOAA&amp;libraries=places&amp;callback=AutoComplete.init" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAP_API_KEY'); ?>&amp;libraries=places&amp;callback=AutoComplete.init" async defer></script>
 </body>
 </html>
