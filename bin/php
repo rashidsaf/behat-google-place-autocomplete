@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker run -u=1000 -it -v $(pwd):/data -w /data --rm --net behatgoogleplaceautocomplete_default \
+    --link web:behatgoogleplaceautocomplete.local \
+    php:7-cli php $@

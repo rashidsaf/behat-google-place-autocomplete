@@ -1,0 +1,20 @@
+{
+  "name": "behat-google-place-autocomplete",
+  "version": "1.0.0",
+  "description": "Mink extension for [Google Place Autocomplete](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform)",
+  "main": "web/index.php",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Medology/behat-google-place-autocomplete.git"
+  },
+  "contributors": "Josh Medeski <josh@medology.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Medology/behat-google-place-autocomplete/issues"
+  },
+  "homepage": "https://github.com/Medology/behat-google-place-autocomplete#readme",
+  "private": true
+}

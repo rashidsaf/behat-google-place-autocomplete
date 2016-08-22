@@ -1,0 +1,15 @@
+#!/bin/bash +x
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+. "${DIR}"/lib/exitCheck.sh
+
+# install Composer dependancies
+echo "Installing Composer dependancies..."
+bin/composer install
+exitCheck $?
+
+# install bower dependencies
+echo "Installing Bower dependancies"
+bin/bower install
+exitCheck $?
