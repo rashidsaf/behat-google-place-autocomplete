@@ -11,7 +11,7 @@ Feature: Select an address using Google Place Autocomplete
      When I choose the first place autocomplete option
      Then the "Your Street Address" field should contain "<address>"
       And the "City" field should contain "<city>"
-      And I select "<state>" from "State"
+      And the "State" field should contain "<state>"
      Then the "Zip Code" field should contain "<postal>"
 
      Examples:
