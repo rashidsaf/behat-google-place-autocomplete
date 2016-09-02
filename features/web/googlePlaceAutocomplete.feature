@@ -16,4 +16,4 @@ Feature: Select an address using Google Place Autocomplete
 
      Examples:
      | input                               | address                | city    | state | postal |
-     | 5821 Southwest Freeway, Houston, TX | 5821 Southwest Freeway | Houston | Texas |  77057 |
+     | 5821 Southwest Freeway, Houston, TX | 5821 Southwest Freeway | Houston | TX    | 77057  |
