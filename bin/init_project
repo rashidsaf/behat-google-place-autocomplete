@@ -9,6 +9,10 @@ echo "Installing Composer dependancies..."
 bin/composer install
 exitCheck $?
 
+echo "Installing node dependencies..."
+bin/npm install
+exitCheck $?
+
 # install bower dependencies
 echo "Installing Bower dependancies"
 bin/bower install
