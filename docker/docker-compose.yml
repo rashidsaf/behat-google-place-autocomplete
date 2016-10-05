@@ -5,6 +5,7 @@ services:
     image: php:7.0-fpm
     volumes:
       - ..:/data
+    env_file: .env
 
   web:
     image: php:7-apache
@@ -15,7 +16,9 @@ services:
     volumes:
       - ..:/data
       - ../web:/var/www/html
+      - ../docker/.env:/var/www/html/.env
       - ../vendor:/var/www/html/vendor
+    env_file: .env
     ports:
       - 80:80
 
@@ -31,5 +34,6 @@ services:
     volumes:
       - /dev/shm:/dev/shm
       - ..:/data
+    env_file: .env
     ports:
       - 5900:5900
