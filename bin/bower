@@ -3,4 +3,4 @@
 docker run -it --rm \
     -v "$(pwd)":/data -w /data \
     --env-file "$(pwd)"/docker/.env \
-    node:6-slim node_modules/bower/bin/bower "$@" --allow-root
+    node:6 node_modules/bower/bin/bower "$@" --allow-root
