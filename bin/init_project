@@ -4,16 +4,10 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 . "${DIR}"/lib/exitCheck.sh
 
-# install Composer dependancies
-echo "Installing Composer dependancies..."
+# install Composer dependencies
+echo "Installing Composer dependencies..."
 bin/composer install
 exitCheck $?
 
 echo "Installing node dependencies..."
-bin/npm install
-exitCheck $?
-
-# install bower dependencies
-echo "Installing Bower dependancies"
-bin/bower install
-exitCheck $?
+bin/yarn
