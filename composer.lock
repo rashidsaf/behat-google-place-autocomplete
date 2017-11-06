@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "725f25ce815366ef14f4050cba61091a",
-    "content-hash": "8332aeed80a5e8cc1e4e69846c774fe3",
+    "hash": "13c64b56f9597628526fa970fe8433c6",
+    "content-hash": "a92163e9e5e2047bd46068e234c04d9d",
     "packages": [
         {
             "name": "behat/behat",
@@ -311,6 +311,46 @@
             "time": "2017-04-04 11:38:05"
         },
         {
+            "name": "chekote/noun-store",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Chekote/noun-store.git",
+                "reference": "7dc4e4ea392d9e12817bbb91e0d9df442afdc289"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Chekote/noun-store/zipball/7dc4e4ea392d9e12817bbb91e0d9df442afdc289",
+                "reference": "7dc4e4ea392d9e12817bbb91e0d9df442afdc289",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.30"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": [
+                        "src",
+                        "test"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Store and work with Nouns",
+            "keywords": [
+                "noun",
+                "testing"
+            ],
+            "time": "2017-11-05 18:27:23"
+        },
+        {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
             "source": {
@@ -343,22 +383,23 @@
         },
         {
             "name": "medology/flexible-mink",
-            "version": "dev-master",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Medology/FlexibleMink.git",
-                "reference": "365fb2c7ad3f71104d30d1f75710035636c62366"
+                "reference": "810751bcaf7e54971b583b13e1c0387d5fb17f07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/365fb2c7ad3f71104d30d1f75710035636c62366",
-                "reference": "365fb2c7ad3f71104d30d1f75710035636c62366",
+                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/810751bcaf7e54971b583b13e1c0387d5fb17f07",
+                "reference": "810751bcaf7e54971b583b13e1c0387d5fb17f07",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.0",
                 "behat/mink-extension": "^2.0",
-                "php": ">=5.4",
+                "chekote/noun-store": "^1.0",
+                "php": ">=5.6.31",
                 "symfony/config": ">=2.8"
             },
             "require-dev": {
@@ -368,9 +409,11 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Behat\\FlexibleMink\\": "src/",
-                    "Behat\\ParallelWorker\\": "src/",
-                    "features\\": ""
+                    "": "src/",
+                    "features": ""
+                },
+                "psr-4": {
+                    "Tests\\": "tests"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -383,7 +426,7 @@
                 "Mink",
                 "testing"
             ],
-            "time": "2017-09-05 21:38:46"
+            "time": "2017-11-05 18:29:53"
         },
         {
             "name": "psr/container",
