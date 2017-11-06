@@ -58,6 +58,8 @@ If you wish to view the browser, you can use a VNC client to connect to the Chro
 For example, if you're environment is the Medology standard setup, you can use Safari and navigate to
 `vnc://behatgoogleplaceautocomplete.local`.
 
+Before you can run the tests, you need to add an [API key](https://developers.google.com/maps/documentation/javascript/get-api-key) for the Google Geocode feature. Please replace `YOUR_API_KEY` in the web/index.html file with your API key.
+
 Once the browser is running, you can execute your Behat tests as follows:
 
 ```bash
