@@ -1,8 +1,7 @@
 <?php
 
 use Behat\Behat\Context\Context;
-use Behat\FlexibleMink\Context\FlexibleContext;
-use Behat\FlexibleMink\PseudoInterface\MinkContextInterface;
+use Medology\Behat\Mink\FlexibleContext;
 use Medology\Behat\GooglePlaceAutocomplete\Contexts\GooglePlaceAutocompleteContext;
 
 /**
@@ -11,5 +10,4 @@ use Medology\Behat\GooglePlaceAutocomplete\Contexts\GooglePlaceAutocompleteConte
 class WebContext extends FlexibleContext implements Context
 {
     use GooglePlaceAutocompleteContext;
-    use MinkContextInterface;
 }
