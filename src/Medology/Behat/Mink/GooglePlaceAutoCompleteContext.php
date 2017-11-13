@@ -1,8 +1,7 @@
-<?php namespace Medology\Behat\GooglePlaceAutoComplete\Contexts;
+<?php namespace Medology\Behat\Mink;
 
 use Behat\Behat\Context\Context;
 use Behat\Mink\Exception\ExpectationException;
-use Medology\Behat\Mink\UsesFlexibleContext;
 use Medology\Spinner;
 
 /**
