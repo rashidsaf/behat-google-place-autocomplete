@@ -3,7 +3,8 @@ default:
     default:
       path: %paths.base%/features
       contexts:
-        - WebContext
+        - Medology\Behat\GooglePlaceAutocomplete\Contexts\GooglePlaceAutocompleteContext
+        - Medology\Behat\Mink\FlexibleContext
         - Medology\Behat\StoreContext
   extensions:
     Behat\MinkExtension:

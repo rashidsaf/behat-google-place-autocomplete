@@ -5,7 +5,7 @@
   "license": "MIT",
   "require": {
     "behat/behat": "^3.0",
-    "medology/flexible-mink": "2.0.x-dev",
+    "medology/flexible-mink": "dev-uses_traits#a34ccc7 as 2.0.x-dev",
     "behat/mink-extension": "^2.0",
     "symfony/config": "~2.8"
   },
@@ -17,5 +17,11 @@
     "psr-4": {
       "Medology\\": "src/"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Chekote/FlexibleMink"
+    }
+  ]
 }
