@@ -5,7 +5,6 @@ services:
     image: nginx:1.13.6-alpine
     volumes:
       - ..:/usr/share/nginx
-      - ../web:/usr/share/nginx/html
     env_file: .env
     ports:
       - 80:80
