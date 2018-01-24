@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "107ca3c71d7ae5005e134f7e77065f2a",
-    "content-hash": "b0ff8f7ec3220e062303fb55956f09c5",
+    "hash": "2172dacddd933928415e33419ea29393",
+    "content-hash": "a92163e9e5e2047bd46068e234c04d9d",
     "packages": [
         {
             "name": "behat/behat",
@@ -383,16 +383,16 @@
         },
         {
             "name": "medology/flexible-mink",
-            "version": "dev-uses_traits",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Chekote/FlexibleMink.git",
-                "reference": "a34ccc7"
+                "url": "https://github.com/Medology/FlexibleMink.git",
+                "reference": "7baf3b3329a79011d2f39463e9ed0b9dffd679e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chekote/FlexibleMink/zipball/a34ccc7",
-                "reference": "a34ccc7",
+                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/7baf3b3329a79011d2f39463e9ed0b9dffd679e4",
+                "reference": "7baf3b3329a79011d2f39463e9ed0b9dffd679e4",
                 "shasum": ""
             },
             "require": {
@@ -416,20 +416,17 @@
                     "Tests\\": "tests"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Mink Extensions for Commonly Used Assertions and Object Storage",
             "keywords": [
-                "behat",
-                "mink",
+                "Behat",
+                "Mink",
                 "testing"
             ],
-            "support": {
-                "issues": "https://github.com/Medology/FlexibleMink/issues",
-                "source": "https://github.com/Medology/FlexibleMink"
-            },
-            "time": "2017-11-12 22:43:29"
+            "time": "2017-11-30 21:29:43"
         },
         {
             "name": "psr/container",
@@ -1335,14 +1332,7 @@
             "time": "2016-09-01 10:05:43"
         }
     ],
-    "aliases": [
-        {
-            "alias": "2.0.x-dev",
-            "alias_normalized": "2.0.9999999.9999999-dev",
-            "version": "dev-uses_traits",
-            "package": "medology/flexible-mink"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "medology/flexible-mink": 20
