@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2172dacddd933928415e33419ea29393",
-    "content-hash": "a92163e9e5e2047bd46068e234c04d9d",
+    "hash": "5f8ed4bdfe7d7d21bb8466609b6dc379",
+    "content-hash": "827f97fc4011c86756778ce8aad1e4b4",
     "packages": [
         {
             "name": "behat/behat",
@@ -1221,6 +1221,45 @@
                 "webdriver"
             ],
             "time": "2016-03-05 09:10:18"
+        },
+        {
+            "name": "chekote/behat-retry-extension",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Chekote/BehatRetryExtension.git",
+                "reference": "3ae9d951f9e74cca5c037a181488d8daf1307612"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Chekote/BehatRetryExtension/zipball/3ae9d951f9e74cca5c037a181488d8daf1307612",
+                "reference": "3ae9d951f9e74cca5c037a181488d8daf1307612",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": "~3.0"
+            },
+            "require-dev": {
+                "friends-of-behat/test-context": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Chekote\\BehatRetryExtension": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Donald Tyler",
+                    "email": "domhnall.tilliere@gmail.com"
+                }
+            ],
+            "description": "Automatically retry \"Then\" steps in Behat",
+            "time": "2017-11-19 17:00:47"
         },
         {
             "name": "instaclick/php-webdriver",

@@ -11,7 +11,8 @@
   },
   "require-dev":{
     "vlucas/phpdotenv": "^2.3",
-    "behat/mink-selenium2-driver": "*"
+    "behat/mink-selenium2-driver": "*",
+    "Chekote/behat-retry-extension": "^1.0"
   },
   "autoload": {
     "psr-0": {

@@ -16,4 +16,5 @@ default:
           selenium2:
             browser: chrome
             wd_host: http://chrome:4444/wd/hub
+    Chekote\BehatRetryExtension: ~
     Medology\Behat\ParallelWorker\Extension: ~
