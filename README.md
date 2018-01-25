@@ -50,6 +50,10 @@ init_project
 
 You can now access the site at http://behatgoogleplaceautocomplete.local
 
+## Google Maps API Key
+
+You will need to grab a Google Maps API Key for this project to function. You can grab an API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key). Once you have one, you'll want to replace "YOUR_API_KEY" in the index.html file with it.
+
 ## Executing tests
 
 The project is configured to the headless Chrome container by default.
