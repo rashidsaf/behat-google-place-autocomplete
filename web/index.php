@@ -140,13 +140,13 @@ $dotenv->load();
                 // Get each component of the address from the place details
                 // and fill the corresponding field on the form.
                 var prOverride = false;
-        		var placeAddressComponentsLength = place.address_components.length;
+        		var placeAddressComponentsLength = (place.address_components || []).length;
                 for (var i=0; i < placeAddressComponentsLength; i++) {
                     if (place.address_components[i].types[0] == 'country' && place.address_components[i]['long_name'] == 'Puerto Rico') {
                         prOverride = true;
                     }
                 }
-                for (var i = 0; i < place.address_components.length; i++) {
+                for (var i = 0; i < (place.address_components || []).length; i++) {
                     var addressType = place.address_components[i].types[0];
                     if (componentForm[addressType]) {
                         var val = place.address_components[i][componentForm[addressType]];
