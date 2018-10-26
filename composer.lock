@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5f8ed4bdfe7d7d21bb8466609b6dc379",
-    "content-hash": "827f97fc4011c86756778ce8aad1e4b4",
+    "hash": "44fe902dc1d133f19f37860d8a44c211",
+    "content-hash": "66023095e729989e911bde2fc3c362da",
     "packages": [
         {
             "name": "behat/behat",
@@ -312,30 +312,30 @@
         },
         {
             "name": "chekote/noun-store",
-            "version": "1.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chekote/noun-store.git",
-                "reference": "7dc4e4ea392d9e12817bbb91e0d9df442afdc289"
+                "reference": "f87f9b0abf918bbbe84344aa589225d759d049b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chekote/noun-store/zipball/7dc4e4ea392d9e12817bbb91e0d9df442afdc289",
-                "reference": "7dc4e4ea392d9e12817bbb91e0d9df442afdc289",
+                "url": "https://api.github.com/repos/Chekote/noun-store/zipball/f87f9b0abf918bbbe84344aa589225d759d049b1",
+                "reference": "f87f9b0abf918bbbe84344aa589225d759d049b1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6.30"
             },
             "require-dev": {
+                "phake/phake": "^2.3",
                 "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
                     "": [
-                        "src",
-                        "test"
+                        "src"
                     ]
                 }
             },
@@ -348,7 +348,7 @@
                 "noun",
                 "testing"
             ],
-            "time": "2017-11-05 18:27:23"
+            "time": "2018-10-24 19:10:48"
         },
         {
             "name": "container-interop/container-interop",
@@ -383,22 +383,22 @@
         },
         {
             "name": "medology/flexible-mink",
-            "version": "2.0.x-dev",
+            "version": "v2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Medology/FlexibleMink.git",
-                "reference": "7baf3b3329a79011d2f39463e9ed0b9dffd679e4"
+                "reference": "89c336a32ac4eabb07a2a68c495c2e9f27d83bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/7baf3b3329a79011d2f39463e9ed0b9dffd679e4",
-                "reference": "7baf3b3329a79011d2f39463e9ed0b9dffd679e4",
+                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/89c336a32ac4eabb07a2a68c495c2e9f27d83bd6",
+                "reference": "89c336a32ac4eabb07a2a68c495c2e9f27d83bd6",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.0",
                 "behat/mink-extension": "^2.0",
-                "chekote/noun-store": "^1.0",
+                "chekote/noun-store": "^3.0",
                 "php": ">=5.6.31",
                 "symfony/config": ">=2.8"
             },
@@ -426,7 +426,7 @@
                 "Mink",
                 "testing"
             ],
-            "time": "2017-11-30 21:29:43"
+            "time": "2018-10-25 16:04:48"
         },
         {
             "name": "psr/container",
@@ -1373,9 +1373,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "medology/flexible-mink": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
