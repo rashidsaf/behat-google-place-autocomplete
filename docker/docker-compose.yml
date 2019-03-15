@@ -1,18 +1,8 @@
 version: '2'
 
 services:
-  app:
-    image: php:7.0-fpm
-    volumes:
-      - ..:/data
-    env_file: .env
-
   web:
     image: php:7-apache
-    depends_on:
-      - app
-    links:
-      - app
     volumes:
       - ..:/data
       - ../web:/var/www/html
