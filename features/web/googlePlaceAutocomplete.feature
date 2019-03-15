@@ -7,7 +7,7 @@ Feature: Select an address using Google Place Autocomplete
     Given I am on "/"
      When I fill in "Your Street Address" with "<input>"
       And I focus the "Your Street Address" field
-     Then I should see "United States"
+     Then I should see "USA"
      When I choose the first place autocomplete option
      Then the "Your Street Address" field should contain "<address>"
       And the "City" field should contain "<city>"
