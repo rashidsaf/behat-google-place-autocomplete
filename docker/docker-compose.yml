@@ -17,7 +17,7 @@ services:
     depends_on:
       - web
     environment:
-      - no_proxy:localhost
+      - no_proxy:behatgoogleplaceautocomplete.local
     links:
       - web
       - web:behatgoogleplaceautocomplete.local
