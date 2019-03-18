@@ -97,6 +97,87 @@ $dotenv->load();
     </div>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script>
+        // BEGIN AUTOCOMPLETE MOCK.
+        var testElement =
+            '<div class="pac-container pac-logo" style="width: 1438px;left: 0px;top: 139px;">' +
+                '<div class="pac-item">' +
+                    '<span class="pac-icon pac-icon-marker"></span>' +
+                    '<span class="pac-item-query">' +
+                        '<span class="pac-matched">5821</span>' +
+                        '<span class="pac-matched">Southwest Freeway</span>' +
+                    '</span>' +
+                    '<span>Houston, TX, USA</span>' +
+                '</div>' +
+                '<div class="pac-item">' +
+                    '<span class="pac-icon pac-icon-marker"></span>' +
+                    '<span class="pac-item-query">' +
+                        '<span class="pac-matched">5821 Southwest Freeway</span>' +
+                        ' Service Road' +
+                    '</span>' +
+                    '<span>Houston, TX, USA</span>' +
+                '</div>' +
+            '</div>';
+
+        google = {maps: {
+            places: {Autocomplete: AutocompleteMock},
+            event: {addListener: AddMockListener}
+        }};
+
+        function AutocompleteMock(element) {
+            this.element = element;
+            var autocomplete = this;
+
+            $(element).on('change', function() {
+                if ($(element).val().indexOf('5821 Southwest') === 0 && !autocomplete.open) {
+                    autocomplete.open = true;
+
+                    var newElement = $(testElement);
+                    $('body').append(newElement);
+
+                    newElement.on('click', '.pac-item', function() {
+                        newElement.remove();
+                        autocomplete.open = false;
+                        $(element).val('5821 Southwest Freeway, Houston, TX');
+                        autocomplete.selectCallback();
+                    });
+                }
+            })
+        }
+
+        AutocompleteMock.prototype = {};
+
+        function AddMockListener(autocomplete, event, callback) {
+            if (event !== 'place_changed') {
+                throw 'This mock only implements the "place_changed" event';
+            }
+
+            autocomplete.selectCallback = callback;
+        }
+
+        AutocompleteMock.prototype.getPlace = function() {
+            return {
+                address_components: [
+                    {
+                        types: ['locality'],
+                        long_name: 'Houston',
+                    },
+                    {
+                        types: ['administrative_area_level_1'],
+                        short_name: 'TX',
+                    },
+                    {
+                        types: ['country'],
+                        long_name: 'United States',
+                    },
+                    {
+                        types: ['postal_code'],
+                        short_name: '77057',
+                    }
+                ]
+            };
+        };
+        // END AUTOCOMPLETE MOCK.
+
         var AutoComplete = function () {
             var self = {};
             /**
@@ -163,7 +244,9 @@ $dotenv->load();
 
             return self;
         }();
+
+        // Initialize autocomplete.
+        AutoComplete.init();
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAP_API_KEY'); ?>&amp;libraries=places&amp;callback=AutoComplete.init" async defer></script>
 </body>
 </html>
