@@ -97,7 +97,75 @@ $dotenv->load();
     </div>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script>
-        // BEGIN AUTOCOMPLETE MOCK.
+        var AutoComplete = function () {
+            var self = {};
+            /**
+             * This example displays an address form, using the autocomplete feature
+             * of the Google Places API to help users fill in the information.
+             *
+             * @var autocomplete Sets the Google maps places autocomplete
+             * @var compnentForm Configuraiton for the form of the autocomplete
+             */
+            var autocomplete;
+            var componentForm = {
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'long_name',
+                postal_code: 'short_name'
+            };
+
+            self.init = function() {
+                // Create the autocomplete object, restricting the search
+                // to geographical location types.
+                autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {HTMLInputElement} */(document.getElementById('contact_street_address')),
+                    { types: ['geocode'] });
+                // When the user selects an address from the dropdown,
+                // populate the address fields in the form.
+                google.maps.event.addListener(autocomplete, 'place_changed', fillInAddressImpl);
+            };
+
+
+            function fillInAddressImpl(){
+                var $loading = $("#loading_address_form");
+                $loading.show();
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
+
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+                var prOverride = false;
+                var placeAddressComponentsLength = (place.address_components || []).length;
+                for (var i=0; i < placeAddressComponentsLength; i++) {
+                    if (place.address_components[i].types[0] == 'country' && place.address_components[i]['long_name'] == 'Puerto Rico') {
+                        prOverride = true;
+                    }
+                }
+                for (var i = 0; i < (place.address_components || []).length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType]) {
+                        var val = place.address_components[i][componentForm[addressType]];
+                        if (addressType == 'administrative_area_level_1' && prOverride) {
+                            val = 'PR';
+                        }
+                        document.getElementById(addressType).value = val;
+                    }
+                }
+                var addressPatient = document.getElementById("contact_street_address").value;
+                document.getElementById('contact_street_address').value = addressPatient.substr(0, addressPatient.indexOf(','));
+                $loading.hide();
+            }
+
+            return self;
+        }();
+
+        // CODE BELOW THIS LINE IS THE AUTOCOMPLETE MOCK.
+
         var testElement =
             '<div class="pac-container pac-logo" style="width: 1438px;left: 0px;top: 139px;">' +
                 '<div class="pac-item">' +
@@ -176,76 +244,8 @@ $dotenv->load();
                 ]
             };
         };
-        // END AUTOCOMPLETE MOCK.
 
-        var AutoComplete = function () {
-            var self = {};
-            /**
-             * This example displays an address form, using the autocomplete feature
-             * of the Google Places API to help users fill in the information.
-             *
-             * @var autocomplete Sets the Google maps places autocomplete
-             * @var compnentForm Configuraiton for the form of the autocomplete
-             */
-            var autocomplete;
-            var componentForm = {
-                locality: 'long_name',
-                administrative_area_level_1: 'short_name',
-                country: 'long_name',
-                postal_code: 'short_name'
-            };
-
-            self.init = function() {
-                // Create the autocomplete object, restricting the search
-                // to geographical location types.
-                autocomplete = new google.maps.places.Autocomplete(
-                        /** @type {HTMLInputElement} */(document.getElementById('contact_street_address')),
-                        { types: ['geocode'] });
-                // When the user selects an address from the dropdown,
-                // populate the address fields in the form.
-                google.maps.event.addListener(autocomplete, 'place_changed', fillInAddressImpl);
-            };
-
-
-            function fillInAddressImpl(){
-                var $loading = $("#loading_address_form");
-                $loading.show();
-                // Get the place details from the autocomplete object.
-                var place = autocomplete.getPlace();
-
-                for (var component in componentForm) {
-                    document.getElementById(component).value = '';
-                    document.getElementById(component).disabled = false;
-                }
-
-                // Get each component of the address from the place details
-                // and fill the corresponding field on the form.
-                var prOverride = false;
-        		var placeAddressComponentsLength = (place.address_components || []).length;
-                for (var i=0; i < placeAddressComponentsLength; i++) {
-                    if (place.address_components[i].types[0] == 'country' && place.address_components[i]['long_name'] == 'Puerto Rico') {
-                        prOverride = true;
-                    }
-                }
-                for (var i = 0; i < (place.address_components || []).length; i++) {
-                    var addressType = place.address_components[i].types[0];
-                    if (componentForm[addressType]) {
-                        var val = place.address_components[i][componentForm[addressType]];
-                        if (addressType == 'administrative_area_level_1' && prOverride) {
-                            val = 'PR';
-                        }
-                        document.getElementById(addressType).value = val;
-                    }
-                }
-                var addressPatient = document.getElementById("contact_street_address").value;
-                document.getElementById('contact_street_address').value = addressPatient.substr(0, addressPatient.indexOf(','));
-                $loading.hide();
-            }
-
-            return self;
-        }();
-
-        // Initialize autocomplete.
+        // Initialize custom autocomplete code. Normally the Google API would be passed this as the callback.
         AutoComplete.init();
     </script>
 </body>
