@@ -166,6 +166,7 @@ $dotenv->load();
 
         // CODE BELOW THIS LINE IS THE AUTOCOMPLETE MOCK.
 
+        // Test autocomplete mock. Only handles completing the specific address "5821 Southwest Freeway".
         var testElement =
             '<div class="pac-container pac-logo" style="width: 1438px;left: 0px;top: 139px;">' +
                 '<div class="pac-item">' +
@@ -191,6 +192,12 @@ $dotenv->load();
             event: {addListener: AddMockListener}
         }};
 
+        /**
+         * Initializes the mocked Autocomplete API.
+         *
+         * @param {HTMLInputElement} element The input that Autocomplete should be bound to.
+         * @constructor
+         */
         function AutocompleteMock(element) {
             this.element = element;
             var autocomplete = this;
@@ -214,6 +221,13 @@ $dotenv->load();
 
         AutocompleteMock.prototype = {};
 
+        /**
+         * Mocks the addListener binding for the Autocomplete mock. Only handles selecting an address suggestion.
+         *
+         * @param {AutocompleteMock} autocomplete The Autocomplete mock to add a listener for.
+         * @param {string}           event        The event to listen for. Only supports 'place_changed'.
+         * @param {function()}       callback     The callback to execute when selecting an address suggestion.
+         */
         function AddMockListener(autocomplete, event, callback) {
             if (event !== 'place_changed') {
                 throw 'This mock only implements the "place_changed" event';
@@ -222,6 +236,11 @@ $dotenv->load();
             autocomplete.selectCallback = callback;
         }
 
+        /**
+         * Returns a mock address approximately matching Google's Places syntax.
+         *
+         * @returns {{address_components: *[]}}
+         */
         AutocompleteMock.prototype.getPlace = function() {
             return {
                 address_components: [
