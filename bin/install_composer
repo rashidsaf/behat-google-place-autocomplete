@@ -12,7 +12,7 @@ if [ -e "$DIR"/bin/composer ]; then
     FOUND_VERSION=`composer --version | tail -1 | awk '{print $3}' | linux-sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"`
 
     # Check version of installed composer
-    if [ ${FOUND_VERSION} == ${EXPECTED_VERSION} ]; then
+    if [[ "${FOUND_VERSION}" == "${EXPECTED_VERSION}" ]]; then
         # Version is as expected. We're done.
         echo "Composer ${EXPECTED_VERSION} already installed."
         exit 0
