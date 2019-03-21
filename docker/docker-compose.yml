@@ -6,8 +6,6 @@ services:
     volumes:
       - ..:/data
       - ../web:/var/www/html
-      - ../docker/.env:/var/www/html/.env
-      - ../vendor:/var/www/html/vendor
     env_file: .env
     ports:
       - 80:80

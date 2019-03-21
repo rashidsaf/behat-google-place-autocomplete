@@ -1,8 +1,3 @@
-<?php
-require_once 'vendor/autoload.php';
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-?>
 <!doctype html>
 <html lang="en">
 <head>
