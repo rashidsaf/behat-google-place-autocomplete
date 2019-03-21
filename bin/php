@@ -1,8 +1,21 @@
 #!/usr/bin/env bash
 
-docker run -u=1000 -it --rm \
-    -v $(pwd):/data -w /data \
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT="$(cd "${DIR}"/../ && pwd)"
+
+. "${ROOT}"/docker/lib/docker_host_user_id.sh
+. "${DIR}"/lib/images.sh
+. "${DIR}"/lib/rm.sh
+. "${DIR}"/lib/tty.sh
+
+docker run \
+    -i${TTY} \
+    -e LOCAL_USER_ID=$DOCKER_HOST_USER_ID \
+    -v $(pwd):/workdir \
+    -v ~/.composer:/home/user/.composer \
+    -w /workdir \
     --env-file "$(pwd)"/docker/.env \
     --net behatgoogleplaceautocomplete_default \
     --link web:behatgoogleplaceautocomplete.local \
-    php:7-cli php "$@"
+    ${RM} \
+    ${PHP_ACCOUNT}/${PHP_REPO}:${PHP_TAG} php "$@"

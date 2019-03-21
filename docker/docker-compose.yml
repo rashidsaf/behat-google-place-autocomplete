@@ -1,33 +1,21 @@
 version: '2'
 
 services:
-  app:
-    image: php:7.0-fpm
-    volumes:
-      - ..:/data
-    env_file: .env
-
   web:
     image: php:7-apache
-    depends_on:
-      - app
-    links:
-      - app
     volumes:
       - ..:/data
       - ../web:/var/www/html
-      - ../docker/.env:/var/www/html/.env
-      - ../vendor:/var/www/html/vendor
     env_file: .env
     ports:
       - 80:80
 
   chrome:
-    image: selenium/standalone-chrome-debug:2.53.0
+    image: selenium/standalone-chrome-debug:3.14.0-dubnium
     depends_on:
       - web
     environment:
-      - no_proxy:localhost
+      - no_proxy:behatgoogleplaceautocomplete.local
     links:
       - web
       - web:behatgoogleplaceautocomplete.local

@@ -1,8 +1,3 @@
-<?php
-require_once 'vendor/autoload.php';
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,7 +5,7 @@ $dotenv->load();
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Behat Google Places Autocompete</title>
-    <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.min.css">
+    <link rel="stylesheet" href="bower_components/foundation-sites/dist/css/foundation.min.css">
 </head>
 <body>
 
@@ -118,8 +113,8 @@ $dotenv->load();
                 // Create the autocomplete object, restricting the search
                 // to geographical location types.
                 autocomplete = new google.maps.places.Autocomplete(
-                        /** @type {HTMLInputElement} */(document.getElementById('contact_street_address')),
-                        { types: ['geocode'] });
+                    /** @type {HTMLInputElement} */(document.getElementById('contact_street_address')),
+                    { types: ['geocode'] });
                 // When the user selects an address from the dropdown,
                 // populate the address fields in the form.
                 google.maps.event.addListener(autocomplete, 'place_changed', fillInAddressImpl);
@@ -140,7 +135,7 @@ $dotenv->load();
                 // Get each component of the address from the place details
                 // and fill the corresponding field on the form.
                 var prOverride = false;
-        		var placeAddressComponentsLength = (place.address_components || []).length;
+                var placeAddressComponentsLength = (place.address_components || []).length;
                 for (var i=0; i < placeAddressComponentsLength; i++) {
                     if (place.address_components[i].types[0] == 'country' && place.address_components[i]['long_name'] == 'Puerto Rico') {
                         prOverride = true;
@@ -163,7 +158,109 @@ $dotenv->load();
 
             return self;
         }();
+
+        // CODE BELOW THIS LINE IS THE AUTOCOMPLETE MOCK.
+
+        // Test autocomplete mock. Only handles completing the specific address "5821 Southwest Freeway".
+        var testElement =
+            '<div class="pac-container pac-logo" style="width: 1438px;left: 0px;top: 139px;">' +
+                '<div class="pac-item">' +
+                    '<span class="pac-icon pac-icon-marker"></span>' +
+                    '<span class="pac-item-query">' +
+                        '<span class="pac-matched">5821</span>' +
+                        '<span class="pac-matched">Southwest Freeway</span>' +
+                    '</span>' +
+                    '<span>Houston, TX, USA</span>' +
+                '</div>' +
+                '<div class="pac-item">' +
+                    '<span class="pac-icon pac-icon-marker"></span>' +
+                    '<span class="pac-item-query">' +
+                        '<span class="pac-matched">5821 Southwest Freeway</span>' +
+                        ' Service Road' +
+                    '</span>' +
+                    '<span>Houston, TX, USA</span>' +
+                '</div>' +
+            '</div>';
+
+        google = {maps: {
+            places: {Autocomplete: AutocompleteMock},
+            event: {addListener: AddMockListener}
+        }};
+
+        /**
+         * Initializes the mocked Autocomplete API.
+         *
+         * @param {HTMLInputElement} element The input that Autocomplete should be bound to.
+         * @constructor
+         */
+        function AutocompleteMock(element) {
+            this.element = element;
+            var autocomplete = this;
+
+            $(element).on('change', function() {
+                if ($(element).val().indexOf('5821 Southwest') === 0 && !autocomplete.open) {
+                    autocomplete.open = true;
+
+                    var newElement = $(testElement);
+                    $('body').append(newElement);
+
+                    newElement.on('click', '.pac-item', function() {
+                        newElement.remove();
+                        autocomplete.open = false;
+                        $(element).val('5821 Southwest Freeway, Houston, TX');
+                        autocomplete.selectCallback();
+                    });
+                }
+            })
+        }
+
+        AutocompleteMock.prototype = {};
+
+        /**
+         * Mocks the addListener binding for the Autocomplete mock. Only handles selecting an address suggestion.
+         *
+         * @param {AutocompleteMock} autocomplete The Autocomplete mock to add a listener for.
+         * @param {string}           event        The event to listen for. Only supports 'place_changed'.
+         * @param {function()}       callback     The callback to execute when selecting an address suggestion.
+         */
+        function AddMockListener(autocomplete, event, callback) {
+            if (event !== 'place_changed') {
+                throw 'This mock only implements the "place_changed" event';
+            }
+
+            autocomplete.selectCallback = callback;
+        }
+
+        /**
+         * Returns a mock address approximately matching Google's Places syntax.
+         *
+         * @returns {{address_components: *[]}}
+         */
+        AutocompleteMock.prototype.getPlace = function() {
+            return {
+                address_components: [
+                    {
+                        types: ['locality'],
+                        long_name: 'Houston',
+                    },
+                    {
+                        types: ['administrative_area_level_1'],
+                        short_name: 'TX',
+                    },
+                    {
+                        types: ['country'],
+                        long_name: 'United States',
+                    },
+                    {
+                        types: ['postal_code'],
+                        short_name: '77057',
+                    }
+                ]
+            };
+        };
+
+        // Initialize custom autocomplete code. Normally the Google API would be passed this as the callback.
+        AutoComplete.init();
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAP_API_KEY'); ?>&amp;libraries=places&amp;callback=AutoComplete.init" async defer></script>
 </body>
 </html>

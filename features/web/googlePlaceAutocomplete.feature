@@ -7,7 +7,7 @@ Feature: Select an address using Google Place Autocomplete
     Given I am on "/"
      When I fill in "Your Street Address" with "<input>"
       And I focus the "Your Street Address" field
-     Then I should see "United States"
+     Then I should see "USA"
      When I choose the first place autocomplete option
      Then the "Your Street Address" field should contain "<address>"
       And the "City" field should contain "<city>"
@@ -15,5 +15,5 @@ Feature: Select an address using Google Place Autocomplete
      Then the "Zip Code" field should contain "<postal>"
 
      Examples:
-     | input                               | address                | city    | state | postal |
-     | 5821 Southwest Freeway, Houston, TX | 5821 Southwest Freeway | Houston | TX    | 77057  |
+     | input          | address                | city    | state | postal |
+     | 5821 Southwest | 5821 Southwest Freeway | Houston | TX    | 77057  |

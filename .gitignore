@@ -1,6 +1,6 @@
 .env
 /.idea/*
+/bin/composer
 /node_modules
-/composer.lock
 /vendor/*
-.env
+/web/bower_components
